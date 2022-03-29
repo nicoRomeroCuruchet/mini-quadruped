@@ -327,7 +327,7 @@ int main(void)
   } while(res != 0);
 
   MPU6050_t mpu;
-  float distant_y = -85;
+  float distant_y = -90;
   /* Right Front Leg */
   float rf_r_m_o[3] = {torso_lenght * 0.5, 0.0, torso_width * 0.5};   			    // system o right front measure from m.
   float rf_m_l[3]   = {torso_lenght * 0.5, distant_y,  L1 + (torso_width * 0.5)};   // right front tip of the foot measure from m.
