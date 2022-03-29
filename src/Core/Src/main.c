@@ -336,7 +336,7 @@ int main(void)
   float rr_m_l[3]   = {-20-torso_lenght * 0.5, distant_y,  L1 + (torso_width * 0.5)};  // right rear tip of the foot measure from m.
   /* Left Front Leg */
   float lf_r_m_o[3] = {torso_lenght * 0.5, 0.0, -torso_width*0.5};                  // system o left front measure from m.
-  float lf_m_l[3]   = {torso_lenght * 0.5, distant_y-5, -L1 - (torso_width*0.5)};     // left front tip of the foot measure from m.
+  float lf_m_l[3]   = {torso_lenght * 0.5, distant_y, -L1 - (torso_width*0.5)};     // left front tip of the foot measure from m.
   /* Left Rear Leg */
   float lr_r_m_o[3] = {-torso_lenght*0.5, 0.0, -torso_width*0.5};				    // system o left rear measure from m.
   float lr_m_l[3]   = {-20-torso_lenght*0.5, distant_y, -L1 - (torso_width*0.5)};	    // left rear tip of the foot measure from m.
