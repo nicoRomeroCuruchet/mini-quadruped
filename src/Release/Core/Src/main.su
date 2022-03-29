@@ -1,0 +1,11 @@
+main.c:427:6:SystemClock_Config	72	static,ignoring_inline_asm
+main.c:775:6:inverse_kinematics	64	static
+main.c:804:6:roto_translation	88	static
+main.c:816:6:subtract	16	static
+main.c:823:9:MPU6050_Init	48	static
+main.c:910:8:Kalman_getAngle	96	static
+main.c:856:6:MPU6050_Read_All	72	static
+main.c:232:5:main	456	static,ignoring_inline_asm
+main.c:940:6:HAL_UART_RxCpltCallback	0	static
+main.c:945:6:HAL_UART_TxCpltCallback	0	static,ignoring_inline_asm
+main.c:957:6:Error_Handler	0	static,ignoring_inline_asm

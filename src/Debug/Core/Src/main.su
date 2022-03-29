@@ -1,0 +1,17 @@
+main.c:271:5:main	440	static
+main.c:459:6:SystemClock_Config	72	static
+main.c:498:13:MX_I2C1_Init	8	static
+main.c:532:13:MX_TIM1_Init	96	static
+main.c:619:13:MX_TIM2_Init	64	static
+main.c:690:13:MX_TIM3_Init	64	static
+main.c:761:13:MX_USART2_UART_Init	8	static
+main.c:794:13:MX_GPIO_Init	24	static
+main.c:807:6:inverse_kinematics	80	static
+main.c:836:6:roto_translation	56	static
+main.c:848:6:subtract	32	static
+main.c:855:9:MPU6050_Init	40	static
+main.c:888:6:MPU6050_Read_All	112	static
+main.c:942:8:Kalman_getAngle	88	static
+main.c:972:6:HAL_UART_RxCpltCallback	16	static
+main.c:977:6:HAL_UART_TxCpltCallback	16	static,ignoring_inline_asm
+main.c:989:6:Error_Handler	4	static,ignoring_inline_asm
