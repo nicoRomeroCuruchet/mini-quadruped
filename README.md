@@ -11,5 +11,5 @@ Those magnitudes were the input of a closed PID feedback-loop algorithm which es
 each leg to keep the quadruped’s body balanced.
 
 <p align="center">
-![img](https://media.giphy.com/media/i7qEreajtPtJEAiz5Z/giphy-downsized-large.gif)
+![Demo](https://media.giphy.com/media/i7qEreajtPtJEAiz5Z/giphy-downsized-large.gif)
  </p>
