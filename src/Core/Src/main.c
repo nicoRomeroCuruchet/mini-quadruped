@@ -122,8 +122,8 @@ const double Accel_Z_corrector = 14418.0;
 #define TRANSMITED_BYTES 15
 
 #define MAX_PHI   0.4
-#define MAX_PSI   0.5
-#define MAX_THETA 0.4
+#define MAX_PSI   0.35
+#define MAX_THETA 0.35
 
 #define PID_KALMAN_PSI   0.035
 #define PID_KALMAN_THETA 0.035
@@ -327,7 +327,7 @@ int main(void)
   } while(res != 0);
 
   MPU6050_t mpu;
-  float distant_y = -90;
+  float distant_y = -87;
   /* Right Front Leg */
   float rf_r_m_o[3] = {torso_lenght * 0.5, 0.0, torso_width * 0.5};   			    // system o right front measure from m.
   float rf_m_l[3]   = {torso_lenght * 0.5, distant_y,  L1 + (torso_width * 0.5)};   // right front tip of the foot measure from m.
@@ -387,7 +387,7 @@ int main(void)
 
 		psi   += PID_KALMAN_PSI*error_psi;
 		theta += PID_KALMAN_THETA*error_theta;
-		phi = 0;
+		phi = phi*0.97;
 	}
 	else
 	{
