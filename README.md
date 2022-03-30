@@ -10,5 +10,4 @@ merging both measures in order to obtain the orientation of the body in real tim
 Those magnitudes were the input of a closed PID feedback-loop algorithm which estimated the positions of the
 each leg to keep the quadruped’s body balanced.
 
-
-                    ![Demo](https://media.giphy.com/media/i7qEreajtPtJEAiz5Z/giphy-downsized-large.gif)
+   ![Demo](https://media.giphy.com/media/i7qEreajtPtJEAiz5Z/giphy-downsized-large.gif)
