@@ -1,8 +1,8 @@
 # mini-quadruped
 
-This is an open source project for anyone who wants to research low-cost quadruped robotic platforms, prresents 
-a mathematical description, simulation and implementation of a three-dimensional quadruped robot, with six degrees 
-of freedom on torso and multi-joint legs. The equations to express rotations in 
+This is an open source project for anyone who wants to research low-cost quadruped robotic platforms. 
+A mathematical description, simulation and implementation of a three-dimensional quadruped robot, with six degrees 
+of freedom on torso and multi-joint legs is discussed in this project. The equations to express rotations in 
 combination with the inverse kinematics, allowed to derive an algorithm to find out the position of the 
 multi-joint legs as a function of the torso’s orientation. The goal is to proof that the stabilization
 of the robot can be reached in real shifting environments by incorporating a gyroscope and accelerometer, 
