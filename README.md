@@ -1,8 +1,7 @@
 # mini-quadruped
 
 This is an open source project for anyone who wants to research low-cost quadruped robotic platforms. 
-A mathematical description, simulation and implementation of a three-dimensional quadruped robot is discussed 
-deeply. The equations to express rotations in combination with the inverse kinematics, allowed to 
+The equations to express rotations in combination with the inverse kinematics, allowed to 
 derive an algorithm to find out the position of the multi-joint legs as a function of the torso’s orientation. 
 Via the incorporation of a gyroscope and accelerometer, and merging both measures, is posible to obtain the orientation 
 of the body in real time. Those values and the information collected via the webcam allowed to the robot to 
