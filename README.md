@@ -12,6 +12,7 @@ follow the position of the hand in real time.
 
 # CubeIDE
 
-The **src** directory contains the code that should be executed with the STM32CubeIDE and deployed on the stm32f103c8t6.
+The **src** directory contains the code that should be executed with the STM32CubeIDE and deployed on the stm32f103c8t6. 
+STM32CubeIDE is available for free for different operating systems at the following link https://www.st.com/en/development-tools/stm32cubeide.html
 For this run STM32CubeIDE, go to File -> Import, pull down the tab 'General', select 'Project from Folder or Archive' and click next. 
 Finally choose the path the src where you have cloned this directory on your pc
