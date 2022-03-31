@@ -35,6 +35,7 @@
 #include "main.h"
 #include "servo_configuration.h"
 #include "mpu6050.h"
+#include "inverse_kinematics.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -45,77 +46,14 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
-/*
-typedef struct
-{
-    int16_t Accel_X_RAW;
-    int16_t Accel_Y_RAW;
-    int16_t Accel_Z_RAW;
-    double Ax;
-    double Ay;
-    double Az;
-
-    int16_t Gyro_X_RAW;
-    int16_t Gyro_Y_RAW;
-    int16_t Gyro_Z_RAW;
-    double Gx;
-    double Gy;
-    double Gz;
-
-    float Temperature;
-
-    double KalmanAngleX;
-    double KalmanAngleY;
-
-} MPU6050_t;
-
-typedef struct
-{
-    double Q_angle;
-    double Q_bias;
-    double R_measure;
-    double angle;
-    double bias;
-    double P[2][2];
-} Kalman_t;
-
-uint32_t timer;
-
-Kalman_t KalmanX = {
-    .Q_angle 	= 0.001f,
-    .Q_bias 	= 0.003f,
-    .R_measure 	= 0.03f};
-
-Kalman_t KalmanY = {
-    .Q_angle 	= 0.001f,
-    .Q_bias 	= 0.003f,
-    .R_measure 	= 0.03f,
-};*/
-
-
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 
-/*
-#define WHO_AM_I_REG 0x75
-#define PWR_MGMT_1_REG 0x6B
-#define SMPLRT_DIV_REG 0x19
-#define DLPF_CFG 0x1A
-#define ACCEL_CONFIG_REG 0x1C
-#define ACCEL_XOUT_H_REG 0x3B
-#define TEMP_OUT_H_REG 0x41
-#define GYRO_CONFIG_REG 0x1B
-#define GYRO_XOUT_H_REG 0x43
-#define SIGNAL_PATH_RESET 0x68
-#define MPU6050_ADDR 0xD0
-const uint16_t i2c_timeout = 100;
-const double Accel_Z_corrector = 14418.0;*/
-
 #define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
 #define MAX(X, Y) (((X) > (Y)) ? (X) : (Y))
+
 
 #define RAD_TO_DEG 	57.295779513082320876798154814105
 #define PI 			3.141592653589793
@@ -123,6 +61,7 @@ const double Accel_Z_corrector = 14418.0;*/
 #define L1  45
 #define L2  78
 #define L3  80
+
 #define TRANSMITED_BYTES 15
 
 #define MAX_PHI   0.4
@@ -165,15 +104,7 @@ static void MX_TIM2_Init(void);
 static void MX_TIM3_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_USART2_UART_Init(void);
-
 /* USER CODE BEGIN PFP */
-//uint8_t MPU6050_Init(I2C_HandleTypeDef *I2Cx);
-//void MPU6050_Read_All(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct);
-//double Kalman_getAngle(Kalman_t *Kalman, double newAngle, double newRate, double dt);
-
-void inverse_kinematics(float* x,  float L_1, float L_2, float L_3, char side, float* res);
-void roto_translation(float psi, float phi, float theta, float* T, float* vec, float* res);
-void subtract(float* v_1, float* v_2, float* res);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -719,173 +650,6 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
-void inverse_kinematics(float* x,
-		                float L_1,
-						float L_2,
-						float L_3,
-						char side,
-						float* res)
-{
-
-	float s = 1.0;
-
-	if(side == 'l') s = -1.0;
-
-	float x_1 = x[0];
-	float x_2 = x[1];
-	float x_3 = x[2];
-
-	float D = (x_1*x_1 + x_2*x_2 + x_3*x_3 - L_1*L_1 - L_2*L_2 - L_3*L_3) / (2*L_2*L_3);
-
-	float delta = sqrt(x_2*x_2 + x_3*x_3 - L_1*L_1);
-
-	if(1 - D*D >=0)
-	{
-		res[0] = atan2(x_2, -x_3)  +  atan2(delta, -s*L_1);
-		res[2] = atan2(sqrt(1 - D*D), D);
-		res[1] = atan2(x_1, delta) - atan2(L_3*sin(res[2]), L_2 + L_3*cos(res[2]));
-	}
-
-}
-
-void roto_translation(float psi,
-					  float phi,
-					  float theta,
-					  float* T,
-					  float* vec,
-					  float* res)
-{
-	res[0] = vec[2]*sin(phi) + vec[0]*cos(phi)*cos(psi) - vec[1]*cos(phi)*sin(psi) + T[0];
-	res[1] = vec[0]*(cos(theta)*sin(psi) + cos(psi)*sin(phi)*sin(theta)) + vec[1]*(cos(psi)*cos(theta) - sin(phi)*sin(psi)*sin(theta)) - vec[2]*cos(phi)*sin(theta) + T[1];
-	res[2] = vec[0]*(sin(psi)*sin(theta) - cos(psi)*cos(theta)*sin(phi)) + vec[1]*(cos(psi)*sin(theta) + cos(theta)*sin(phi)*sin(psi)) + vec[2]*cos(phi)*cos(theta) + T[2];
-}
-
-void subtract(float* v_1, float* v_2, float* res)
-{
-	res[0] = v_1[0] - v_2[0];
-	res[1] = v_1[1] - v_2[1];
-	res[2] = v_1[2] - v_2[2];
-}
-/*
-uint8_t MPU6050_Init(I2C_HandleTypeDef *I2Cx)
-{
-    uint8_t check;
-    uint8_t Data;
-
-    // check device ID WHO_AM_I
-
-    HAL_I2C_Mem_Read(I2Cx, MPU6050_ADDR, WHO_AM_I_REG, 1, &check, 1, i2c_timeout);
-
-    if (check == 104) // 0x68 will be returned by the sensor if everything goes well
-    {
-        // power management register 0X6B we should write all 0's to wake the sensor up
-        Data = 0;
-        HAL_I2C_Mem_Write(I2Cx, MPU6050_ADDR, PWR_MGMT_1_REG, 1, &Data, 1, i2c_timeout);
-
-        // Set DATA RATE of 1KHz by writing SMPLRT_DIV register
-        Data = 0x07;
-        HAL_I2C_Mem_Write(I2Cx, MPU6050_ADDR, SMPLRT_DIV_REG, 1, &Data, 1, i2c_timeout);
-
-        // Set accelerometer configuration in ACCEL_CONFIG Register
-        // XA_ST=0,YA_ST=0,ZA_ST=0, FS_SEL=0 -> � 2g
-        Data = 0x00;
-        HAL_I2C_Mem_Write(I2Cx, MPU6050_ADDR, ACCEL_CONFIG_REG, 1, &Data, 1, i2c_timeout);
-
-        // Set Gyroscopic configuration in GYRO_CONFIG Register
-        // XG_ST=0,YG_ST=0,ZG_ST=0, FS_SEL=0 -> � 250 �/s
-        Data = 0x00;
-        HAL_I2C_Mem_Write(I2Cx, MPU6050_ADDR, GYRO_CONFIG_REG, 1, &Data, 1, i2c_timeout);
-        return 0;
-    }
-    return 1;
-}
-
-void MPU6050_Read_All(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct)
-{
-    uint8_t Rec_Data[14];
-    int16_t temp;
-
-    // Read 14 BYTES of data starting from ACCEL_XOUT_H register
-
-    HAL_I2C_Mem_Read(I2Cx, MPU6050_ADDR, ACCEL_XOUT_H_REG, 1, Rec_Data, 14, i2c_timeout);
-
-    DataStruct->Accel_X_RAW = (int16_t)(Rec_Data[0] << 8 | Rec_Data[1]);
-    DataStruct->Accel_Y_RAW = (int16_t)(Rec_Data[2] << 8 | Rec_Data[3]);
-    DataStruct->Accel_Z_RAW = (int16_t)(Rec_Data[4] << 8 | Rec_Data[5]);
-    temp = (int16_t)(Rec_Data[6] << 8 | Rec_Data[7]);
-    DataStruct->Gyro_X_RAW = (int16_t)(Rec_Data[8] << 8 | Rec_Data[9]);
-    DataStruct->Gyro_Y_RAW = (int16_t)(Rec_Data[10] << 8 | Rec_Data[11]);
-    DataStruct->Gyro_Z_RAW = (int16_t)(Rec_Data[12] << 8 | Rec_Data[13]);
-
-    DataStruct->Ax = DataStruct->Accel_X_RAW / 16384.0;
-    DataStruct->Ay = DataStruct->Accel_Y_RAW / 16384.0;
-    DataStruct->Az = DataStruct->Accel_Z_RAW / Accel_Z_corrector;
-    DataStruct->Temperature = (float)((int16_t)temp / (float)340.0 + (float)36.53);
-    DataStruct->Gx = DataStruct->Gyro_X_RAW / 131.0;
-    DataStruct->Gy = DataStruct->Gyro_Y_RAW / 131.0;
-    DataStruct->Gz = DataStruct->Gyro_Z_RAW / 131.0;
-
-    // Kalman angle solve
-    double dt = (double)(HAL_GetTick() - timer) / 1000;
-    timer = HAL_GetTick();
-    double roll;
-    double roll_sqrt = sqrt(
-        DataStruct->Accel_X_RAW * DataStruct->Accel_X_RAW + DataStruct->Accel_Z_RAW * DataStruct->Accel_Z_RAW);
-    if (roll_sqrt != 0.0)
-    {
-        roll = atan(DataStruct->Accel_Y_RAW / roll_sqrt) * RAD_TO_DEG;
-    }
-    else
-    {
-        roll = 0.0;
-    }
-    double pitch = atan2(-DataStruct->Accel_X_RAW, DataStruct->Accel_Z_RAW) * RAD_TO_DEG;
-    if ((pitch < -90 && DataStruct->KalmanAngleY > 90) || (pitch > 90 && DataStruct->KalmanAngleY < -90))
-    {
-        KalmanY.angle = pitch;
-        DataStruct->KalmanAngleY = pitch;
-    }
-    else
-    {
-        DataStruct->KalmanAngleY = Kalman_getAngle(&KalmanY, pitch, DataStruct->Gy, dt);
-    }
-    if (fabs(DataStruct->KalmanAngleY) > 90)
-        DataStruct->Gx = -DataStruct->Gx;
-    DataStruct->KalmanAngleX = Kalman_getAngle(&KalmanX, roll, DataStruct->Gx, dt);
-}
-
-double Kalman_getAngle(Kalman_t *Kalman, double newAngle, double newRate, double dt)
-{
-    double rate = newRate - Kalman->bias;
-    Kalman->angle += dt * rate;
-
-    Kalman->P[0][0] += dt * (dt * Kalman->P[1][1] - Kalman->P[0][1] - Kalman->P[1][0] + Kalman->Q_angle);
-    Kalman->P[0][1] -= dt * Kalman->P[1][1];
-    Kalman->P[1][0] -= dt * Kalman->P[1][1];
-    Kalman->P[1][1] += Kalman->Q_bias * dt;
-
-    double S = Kalman->P[0][0] + Kalman->R_measure;
-    double K[2];
-    K[0] = Kalman->P[0][0] / S;
-    K[1] = Kalman->P[1][0] / S;
-
-    double y = newAngle - Kalman->angle;
-    Kalman->angle += K[0] * y;
-    Kalman->bias  += K[1] * y;
-
-    double P00_temp = Kalman->P[0][0];
-    double P01_temp = Kalman->P[0][1];
-
-    Kalman->P[0][0] -= K[0] * P00_temp;
-    Kalman->P[0][1] -= K[0] * P01_temp;
-    Kalman->P[1][0] -= K[1] * P00_temp;
-    Kalman->P[1][1] -= K[1] * P01_temp;
-
-    return Kalman->angle;
-};
-*/
-
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	HAL_UART_Receive_IT(&huart2, rx_buffer, TRANSMITED_BYTES);
