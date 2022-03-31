@@ -19,4 +19,4 @@ the following link:
 
 The **src** directory contains the code that should be executed with the STM32CubeIDE and deployed on the microcontroller stm32f103c8t6.
 Run STM32CubeIDE, go to File -> Import, pull down the tab 'General', select 'Project from Folder or Archive' and click next. 
-Finally choose the path the src where you have cloned this directory on your pc
+Finally, choose the path the src where you have cloned this directory on your pc
