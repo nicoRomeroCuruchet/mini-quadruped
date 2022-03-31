@@ -33,6 +33,8 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "servo_configuration.h"
+#include "mpu6050.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -44,9 +46,9 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
+/*
 typedef struct
 {
-
     int16_t Accel_X_RAW;
     int16_t Accel_Y_RAW;
     int16_t Accel_Z_RAW;
@@ -89,13 +91,15 @@ Kalman_t KalmanY = {
     .Q_angle 	= 0.001f,
     .Q_bias 	= 0.003f,
     .R_measure 	= 0.03f,
-};
+};*/
 
 
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+
+/*
 #define WHO_AM_I_REG 0x75
 #define PWR_MGMT_1_REG 0x6B
 #define SMPLRT_DIV_REG 0x19
@@ -108,7 +112,7 @@ Kalman_t KalmanY = {
 #define SIGNAL_PATH_RESET 0x68
 #define MPU6050_ADDR 0xD0
 const uint16_t i2c_timeout = 100;
-const double Accel_Z_corrector = 14418.0;
+const double Accel_Z_corrector = 14418.0;*/
 
 #define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
 #define MAX(X, Y) (((X) > (Y)) ? (X) : (Y))
@@ -125,102 +129,12 @@ const double Accel_Z_corrector = 14418.0;
 #define MAX_PSI   0.35
 #define MAX_THETA 0.35
 
-#define PID_KALMAN_PSI   0.035
-#define PID_KALMAN_THETA 0.035
+#define PID_KALMAN_PSI   0.05
+#define PID_KALMAN_THETA 0.05
 
 #define torso_lenght 150
 #define torso_width  90
 
-/* Left Front Leg */
-#define LF_a_servo_i  584.09839082
-#define LF_b_servo_i  1465.0
-
-#define LF_a_servo_ii  -627.07020704
-#define LF_b_servo_ii  970
-
-#define LF_a_servo_iii  949.2240125
-#define LF_b_servo_iii  -25.43047706
-// (i):
-#define MAX_LF_servo_i 2000
-#define MIN_LF_servo_i 1000
-#define LF_servo_i   TIM1->CCR2
-// (ii)
-#define MAX_LF_servo_ii 2450
-#define MIN_LF_servo_ii 550
-#define LF_servo_ii  TIM1->CCR1
-// (iii)
-#define MAX_LF_servo_iii 2100
-#define MIN_LF_servo_iii 900
-#define LF_servo_iii TIM1->CCR4
-
-/* Left Rear Leg */
-#define LR_a_servo_i  -601.60542705
-#define LR_b_servo_i  1425.0
-
-#define LR_a_servo_ii  -604.78852455
-#define LR_b_servo_ii  1050.0
-
-#define LR_a_servo_iii 957.22527156
-#define LR_b_servo_iii -114.77667663
-
-// (i):
-#define MAX_LR_servo_i 2000
-#define MIN_LR_servo_i 1000
-#define LR_servo_i   TIM3->CCR1
-// (ii)
-#define MAX_LR_servo_ii 2450
-#define MIN_LR_servo_ii 600
-#define LR_servo_ii  TIM3->CCR3
-// (iii)
-#define MAX_LR_servo_iii 2100
-#define MIN_LR_servo_iii 1100
-#define LR_servo_iii TIM3->CCR4
-
-/* Right Front Leg */
-#define RF_a_servo_i 598.42232956
-#define RF_b_servo_i 1500.0
-
-#define RF_a_servo_ii 601.60542705
-#define RF_b_servo_ii 1985.0
-
-#define RF_a_servo_iii  -990.64488319
-#define RF_b_servo_iii  3088.20381872
-
-// (i)
-#define MAX_RF_servo_i 2000
-#define MIN_RF_servo_i 1000
-#define RF_servo_i  TIM2->CCR4
-// (ii)
-#define MAX_RF_servo_ii 2370
-#define MIN_RF_servo_ii 600
-#define RF_servo_ii TIM1->CCR3
-//(iii)
-#define MAX_RF_servo_iii 2100
-#define MIN_RF_servo_iii 900
-#define RF_servo_iii TIM2->CCR3
-
-/* Right Rear Leg */
-#define RR_a_servo_i -601.60542705
-#define RR_b_servo_i 1473.33333333
-
-#define RR_a_servo_ii  636.61949953
-#define RR_b_servo_ii  2020.0
-
-#define RR_a_servo_iii  -1053.44201921 //
-#define RR_b_servo_iii  3297.69769341
-
-// (i)
-#define MAX_RR_servo_i 2000
-#define MIN_RR_servo_i 1000
-#define RR_servo_i   TIM2->CCR1
-// (ii)
-#define MAX_RR_servo_ii 2400
-#define MIN_RR_servo_ii 600
-#define RR_servo_ii  TIM3->CCR2
-//(iii)
-#define MAX_RR_servo_iii 2100
-#define MIN_RR_servo_iii 900
-#define RR_servo_iii TIM2->CCR2
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -251,10 +165,12 @@ static void MX_TIM2_Init(void);
 static void MX_TIM3_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_USART2_UART_Init(void);
+
 /* USER CODE BEGIN PFP */
-uint8_t MPU6050_Init(I2C_HandleTypeDef *I2Cx);
-void MPU6050_Read_All(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct);
-double Kalman_getAngle(Kalman_t *Kalman, double newAngle, double newRate, double dt);
+//uint8_t MPU6050_Init(I2C_HandleTypeDef *I2Cx);
+//void MPU6050_Read_All(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct);
+//double Kalman_getAngle(Kalman_t *Kalman, double newAngle, double newRate, double dt);
+
 void inverse_kinematics(float* x,  float L_1, float L_2, float L_3, char side, float* res);
 void roto_translation(float psi, float phi, float theta, float* T, float* vec, float* res);
 void subtract(float* v_1, float* v_2, float* res);
@@ -327,16 +243,16 @@ int main(void)
   } while(res != 0);
 
   MPU6050_t mpu;
-  float distant_y = -87;
+  float distant_y = -70;
   /* Right Front Leg */
   float rf_r_m_o[3] = {torso_lenght * 0.5, 0.0, torso_width * 0.5};   			    // system o right front measure from m.
-  float rf_m_l[3]   = {torso_lenght * 0.5, distant_y,  L1 + (torso_width * 0.5)};   // right front tip of the foot measure from m.
+  float rf_m_l[3]   = {torso_lenght * 0.5 - 30, distant_y,  L1 + (torso_width * 0.5)};   // right front tip of the foot measure from m.
   /* Right Rear Leg */
   float rr_r_m_o[3] = {-torso_lenght * 0.5, 0.0, torso_width * 0.5};		        // system o right rear measure from m.
   float rr_m_l[3]   = {-20-torso_lenght * 0.5, distant_y,  L1 + (torso_width * 0.5)};  // right rear tip of the foot measure from m.
   /* Left Front Leg */
   float lf_r_m_o[3] = {torso_lenght * 0.5, 0.0, -torso_width*0.5};                  // system o left front measure from m.
-  float lf_m_l[3]   = {torso_lenght * 0.5, distant_y, -L1 - (torso_width*0.5)};     // left front tip of the foot measure from m.
+  float lf_m_l[3]   = {torso_lenght * 0.5 - 30, distant_y, -L1 - (torso_width*0.5)};     // left front tip of the foot measure from m.
   /* Left Rear Leg */
   float lr_r_m_o[3] = {-torso_lenght*0.5, 0.0, -torso_width*0.5};				    // system o left rear measure from m.
   float lr_m_l[3]   = {-20-torso_lenght*0.5, distant_y, -L1 - (torso_width*0.5)};	    // left rear tip of the foot measure from m.
@@ -851,7 +767,7 @@ void subtract(float* v_1, float* v_2, float* res)
 	res[1] = v_1[1] - v_2[1];
 	res[2] = v_1[2] - v_2[2];
 }
-
+/*
 uint8_t MPU6050_Init(I2C_HandleTypeDef *I2Cx)
 {
     uint8_t check;
@@ -968,6 +884,7 @@ double Kalman_getAngle(Kalman_t *Kalman, double newAngle, double newRate, double
 
     return Kalman->angle;
 };
+*/
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
