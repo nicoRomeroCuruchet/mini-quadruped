@@ -27,3 +27,4 @@ In src/Core/Src/ (source file) and src/Core/Inc/ (header file) in this directory
 - **inverse_kinematics** : the functions to determine the motion of a quadruped leg to reach a desired position
 - **MPU6050**            : contains the driver to handle the gyroscope and accelerometer, and combine them. Also implements **Kalman's algorithm** to filtering the measurements observed over time. The author of this library is **Bulanov Konstantin** and you can check their github repo with this link https://github.com/leech001/MPU6050 
 
+![alt text](https://github.com/nicoRomeroCuruchet/mini-quadruped/blob/main/img/stm32f103.webp)
