@@ -23,7 +23,7 @@ Finally, choose the path of **src** where you have cloned in your pc.
 
 In src/Core/Src/ (source file) and src/Core/Inc/ (header file) in this directory there are three files:
 
-- main               : Contains the main loop of the program that performs quadruped stabilization.
+- main               : contains the main loop of the program that performs quadruped stabilization.
 - inverse_kinematics : the functions to determine the motion of a quadruped leg to reach a desired position
 - MPU6050
 
