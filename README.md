@@ -32,6 +32,7 @@ To control the quadruped it was used the following microcontroller:
 
 ![alt text](https://github.com/nicoRomeroCuruchet/mini-quadruped/blob/main/img/stm32f103.webp)
 
-the Left Front Leg was handle via timmer 1 channel 1,2,4:
+- the Left Front Leg was handle via timmer 1 channels 1,2,4
+- the  Left Rear Leg was handle via timmer 3 channels 1,3,4
 
 ![alt text](https://github.com/nicoRomeroCuruchet/mini-quadruped/blob/main/img/Screen%20Shot%202022-04-01%20at%2010.30.43.png)
