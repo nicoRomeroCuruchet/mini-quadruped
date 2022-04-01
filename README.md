@@ -39,5 +39,6 @@ The **src/Core/Inc/servo_configuration.h** contains the setup to control the ser
 - The Right Front Leg was handle via timmer 1 and 2. Timmer 2 channels 3,4 and timmer 1 channel 3
 - The Right Rear Leg was handle via timmer 2 and 3. Timmer 2 channel 1,2 and timmer 3 channel 2
 
-
+ and the file in src/mini-quadruped.ioc cotains the setup of the microcontroller:
+ 
 ![alt text](https://github.com/nicoRomeroCuruchet/mini-quadruped/blob/main/img/Screen%20Shot%202022-04-01%20at%2010.30.43.png)
