@@ -7,7 +7,7 @@ Via the incorporation of a gyroscope and accelerometer, and merging both measure
 of the body in real time. Those values and the information collected via the webcam allowed to the robot to 
 follow the position of the hand in real time.
 
-   ![Demo](https://media.giphy.com/media/i7qEreajtPtJEAiz5Z/giphy-downsized-large.gif)
+   ![Demo](https://media.giphy.com/media/G3cX7flMjChq8qKB6s/giphy-downsized-large.gif)
 
 # STM32CubeIDE
 
