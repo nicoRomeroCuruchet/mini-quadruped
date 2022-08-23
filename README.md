@@ -3,7 +3,7 @@
 This is an open source project for anyone who wants to research low-cost quadruped robotic platforms. 
 The equations to express rotations in combination with the inverse kinematics, allowed to 
 derive an algorithm to find out the position of the multi-joint legs as a function of the torso’s orientation. 
-Via the incorporation of a gyroscope and accelerometer, and merging both measures, is posible to obtain the orientation 
+Via the incorporation of a gyroscope and accelerometer, and fusion both measures, it is posible to obtain the orientation 
 of the body in real time. Those values and the information collected via the webcam allowed the hand tracking.
 
    ![Demo](https://media.giphy.com/media/VpOj6hN5GWJ0BFpOUy/giphy-downsized-large.gif)
