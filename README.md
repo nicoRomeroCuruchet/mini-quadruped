@@ -1,10 +1,6 @@
 # mini-quadruped
 
-This is an open source project for anyone who wants to research low-cost quadruped robotic platforms. 
-The equations to express rotations in combination with the inverse kinematics, allowed to 
-derive an algorithm to find out the position of the multi-joint legs as a function of the torso’s orientation. 
-Via the incorporation of a gyroscope and accelerometer, and fusion both measures, it is posible to obtain the orientation 
-of the body in real time. Those values and the information collected via the webcam allowed the hand tracking.
+This is an open source project that anyone can use to research low-cost quadruped robotic platforms. By combining equations for rotations with inverse kinematics, we were able to derive an algorithm to determine the position of the multi-joint legs based on the orientation of the torso. We incorporated a gyroscope and accelerometer, and by fusing both measures, we can obtain real-time information about the orientation of the body. We also use a webcam to collect additional information, which allows for hand tracking.
 
    ![Demo](https://media.giphy.com/media/VpOj6hN5GWJ0BFpOUy/giphy-downsized-large.gif)
 
