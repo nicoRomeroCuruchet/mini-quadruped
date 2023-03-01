@@ -1,6 +1,6 @@
 # mini-quadruped
 
-This is an open source project that anyone can use to research low-cost quadruped robotic platforms. By combining equations for rotations with inverse kinematics, we were able to derive an algorithm to determine the position of the multi-joint legs based on the orientation of the torso. We incorporated a gyroscope and accelerometer, and by fusing both measures, we can obtain real-time information about the orientation of the body. We also use a webcam to collect additional information, which allows for hand tracking.
+This open source project is designed for anyone interested in researching low-cost quadruped robotic platforms, and it's built on the Jetson Nano board and microcontroller stm32f103c8t6. By combining equations for rotations with inverse kinematics, we've derived an algorithm that accurately positions the multi-joint legs based on the orientation of the torso. With the incorporation of a gyroscope and accelerometer, and by fusing both measures, we're able to obtain real-time information about the body's orientation. Additionally, we use a webcam to collect more data, which enables us to track hand movements.
 
    ![Demo](https://media.giphy.com/media/VpOj6hN5GWJ0BFpOUy/giphy-downsized-large.gif)
 
