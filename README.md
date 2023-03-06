@@ -19,6 +19,10 @@ A hand tracking solution that can detect and track the position and movement of 
 
 The STM32F103C8 is a popular microcontroller from STMicroelectronics, based on the ARM Cortex-M3 core. It features 64 KB of Flash memory and 20 KB of SRAM, as well as a variety of on-chip peripherals, such as timers, SPI, I2C, USART, and ADC. The STM32F103C8 is commonly used in a wide range of embedded systems, including industrial control systems, motor control applications, and consumer electronics. Its high-performance, low-power consumption, and rich set of features make it a popular choice for developers looking to build complex and efficient systems. The STM32F103C8 is also supported by a variety of development tools and software, including the STM32CubeMX software tool, which allows developers to configure and generate code for the microcontroller.
 
+PINOUT DIAGRAM:
+
+![alt text](https://github.com/nicoRomeroCuruchet/mini-quadruped/blob/main/img/stm32f103.webp)
+
 # How to deploy the code in the MCU?
 
 The STM32CubeIDE is an advanced C/C++ development platform with peripheral configuration, code generation, code compilation,
@@ -36,11 +40,6 @@ In src/Core/Src/ (source file) and src/Core/Inc/ (header file) in this directory
 - **main**               : contains the main loop of the program that performs quadruped stabilization.
 - **inverse_kinematics** : the functions to determine the motion of a quadruped leg to reach a desired position
 - **MPU6050**            : contains the driver to handle the gyroscope and accelerometer, and combine them. Also implements **Kalman's algorithm** to filtering the measurements observed over time. The author of this library is **Bulanov Konstantin** and you can check out his github repo with this link https://github.com/leech001/MPU6050 
-
-
-To control the servo motors and the mpu6050 of the quadruped it was used the following microcontroller:
-
-![alt text](https://github.com/nicoRomeroCuruchet/mini-quadruped/blob/main/img/stm32f103.webp)
 
 The **src/Core/Inc/servo_configuration.h** contains the setup to control the servos of each leg:
 
