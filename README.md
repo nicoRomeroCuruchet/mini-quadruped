@@ -12,7 +12,7 @@ the following link:
 
       https://www.st.com/en/development-tools/stm32cubeide.html  
 
-The **src** directory contains the code that should be executed with the STM32CubeIDE and deployed on the microcontroller stm32f103c8t6.
+The **src** directory contains the code that should be executed with the STM32CubeIDE and deployed on the blue pill (STM32F103C8T6).
 Run STM32CubeIDE, go to File -> Import, pull down the tab 'General', select 'Project from Folder or Archive' and click next. 
 Finally, choose the path of **src** where you have cloned in your pc.
 
