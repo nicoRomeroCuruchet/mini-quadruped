@@ -2,7 +2,7 @@
 
 This open-source project is designed for anyone interested in researching low-cost quadruped robotic platforms. It's built using the **Jetson Nano board** and the MCU **STM32F103C8T6**. By combining the equations for rigid body rotations with leg inverse kinematics, I've developed an algorithm that accurately positions the multi-joint legs based on the orientation of the torso. With the incorporation of a gyroscope and accelerometer, and by fusing both measures, I'm able to obtain real-time information about the body's orientation. Additionally, I'm using a webcam to collect more data, which enables me to track hand movements.
 
-**Here's a really funny gif of my quadruped for you all!**
+**Here's a really funny gif of my quadruped following my hand for you all!**
 
 ![Demo](https://media.giphy.com/media/VpOj6hN5GWJ0BFpOUy/giphy-downsized-large.gif)
 
