@@ -11,7 +11,7 @@ Jetson Nano is a small, powerful, and low-cost computer developed by NVIDIA, des
 
 The Jetson Nano runs on a Linux-based operating system and supports a variety of popular machine learning frameworks, including TensorFlow, PyTorch, and MXNet. It can be used for a wide range of AI applications, such as object detection, image classification, natural language processing, and robotics. Its compact size and low power consumption make it ideal for building portable and embedded AI systems.
 
-A hand tracking solution that can detect and track the position and movement of hands in real-time video was designed using **MediaPipe**, wich is an open-source framework developed by Google that provides a variety of pre-built, customizable machine learning models and processing pipelines for tasks such as image and video analysis, facial recognition, hand tracking, and more. MediaPipe also provides a set of C++ and Python libraries for developers to easily incorporate these models and pipelines into their own applications.
+A hand tracking solution that can detect and track the position and movement of hands in real-time video was designed using **MediaPipe**, which is an open-source framework developed by Google that provides a variety of pre-built, customizable machine learning models and processing pipelines for tasks such as image and video analysis, facial recognition, hand tracking, and more. MediaPipe also provides a set of C++ and Python libraries for developers to easily incorporate these models and pipelines into their own applications.
 
 
 # STM32F103C8
