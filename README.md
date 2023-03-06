@@ -53,6 +53,6 @@ The **src/Core/Inc/servo_configuration.h** contains the setup to control the ser
 
 The MPU6050 measures rotational and linear motion, and provides accurate data about the quadruped's orientation and movement. It communicates with the host device using I2C interface and can be easily integrated into a variety of microcontroller-based projects. In this project, I am using I2C1, which is located on the pins 6 and 7 of the MCU, and handle with the library probided by Bulanov Konstantin.
 
-# Jeton and MCU conection
-The information collected by the webcam and processed using the Mediapipe libraries running on the Jetson Nano is sent via UART to the blue pill.
+# Jeton Nano and Blue Pill conection
 
+The information collected by the webcam and processed using the Mediapipe libraries running on the Jetson Nano is sent via UART to the STM32. Based on the location of the hand on the screen, the STM32 computes the position of the torso to center the hand in the image captured by the webcam.
