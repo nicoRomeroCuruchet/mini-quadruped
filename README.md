@@ -23,7 +23,7 @@ In src/Core/Src/ (source file) and src/Core/Inc/ (header file) in this directory
 - **MPU6050**            : contains the driver to handle the gyroscope and accelerometer, and combine them. Also implements **Kalman's algorithm** to filtering the measurements observed over time. The author of this library is **Bulanov Konstantin** and you can check out his github repo with this link https://github.com/leech001/MPU6050 
 
 
-To control the servo motors and the **MPU6050** of the quadruped it was used the following microcontroller:
+To control the servo motors and the mpu6050 of the quadruped it was used the following microcontroller:
 
 ![alt text](https://github.com/nicoRomeroCuruchet/mini-quadruped/blob/main/img/stm32f103.webp)
 
