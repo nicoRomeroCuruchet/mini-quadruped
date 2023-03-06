@@ -36,6 +36,9 @@ The **src/Core/Inc/servo_configuration.h** contains the setup to control the ser
 
  and the file in src/mini-quadruped.ioc cotains the setup of the microcontroller it, can be accessed via the STM32CubeIDE:
  
+<img src="[/relative/path/to/img.jpg](https://github.com/nicoRomeroCuruchet/mini-quadruped/blob/main/img/Screen%20Shot%202022-04-01%20at%2010.30.43.png)" alt="Alt Text" width="500"/>
+
+ 
 ![alt text](https://github.com/nicoRomeroCuruchet/mini-quadruped/blob/main/img/Screen%20Shot%202022-04-01%20at%2010.30.43.png)
 
 # MPU6050
