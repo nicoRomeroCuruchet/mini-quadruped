@@ -21,6 +21,11 @@ MediaPipe Hands: a hand tracking solution that can detect and track the position
 MediaPipe Objectron: a model for 3D object detection and tracking in images and videos.
 MediaPipe libraries can be used on various platforms, including desktop, mobile, and web applications.
 
+# STM32F103C8
+
+The STM32F103C8 is a popular microcontroller from STMicroelectronics, based on the ARM Cortex-M3 core. It features 64 KB of Flash memory and 20 KB of SRAM, as well as a variety of on-chip peripherals, such as timers, SPI, I2C, USART, and ADC.
+
+The STM32F103C8 is commonly used in a wide range of embedded systems, including industrial control systems, motor control applications, and consumer electronics. Its high-performance, low-power consumption, and rich set of features make it a popular choice for developers looking to build complex and efficient systems. The STM32F103C8 is also supported by a variety of development tools and software, including the STM32CubeMX software tool, which allows developers to configure and generate code for the microcontroller.
 
 # STM32CubeIDE
 
