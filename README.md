@@ -1,4 +1,4 @@
-# mini-quadruped
+# Mini-Quadruped
 
 This open source project is designed for anyone interested in researching low-cost quadruped robotic platforms, and it's built on the Jetson Nano board and blue pill (STM32F103C8T6). By combining equations for rotations with inverse kinematics, we've derived an algorithm that accurately positions the multi-joint legs based on the orientation of the torso. With the incorporation of a gyroscope and accelerometer, and by fusing both measures, we're able to obtain real-time information about the body's orientation. Additionally, we use a webcam to collect more data, which enables us to track hand movements.
 
