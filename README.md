@@ -4,6 +4,14 @@ This open source project is designed for anyone interested in researching low-co
 
    ![Demo](https://media.giphy.com/media/VpOj6hN5GWJ0BFpOUy/giphy-downsized-large.gif)
 
+
+# Jetno Nano 
+
+Jetson Nano is a small, powerful, and low-cost computer developed by NVIDIA, designed for building AI applications and projects. It features a quad-core ARM Cortex-A57 CPU, a 128-core NVIDIA Maxwell GPU, and 4GB of LPDDR4 memory. The Jetson Nano also includes a variety of I/O ports, including USB 3.0, HDMI, Gigabit Ethernet, and GPIO, making it easy to interface with various devices and sensors.
+
+The Jetson Nano runs on a Linux-based operating system and supports a variety of popular machine learning frameworks, including TensorFlow, PyTorch, and MXNet. It can be used for a wide range of AI applications, such as object detection, image classification, natural language processing, and robotics. Its compact size and low power consumption make it ideal for building portable and embedded AI systems.
+
+
 # STM32CubeIDE
 
 The STM32CubeIDE is an advanced C/C++ development platform with peripheral configuration, code generation, code compilation,
