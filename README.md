@@ -49,7 +49,7 @@ The **src/Core/Inc/servo_configuration.h** contains the setup to control the ser
  and the file in src/mini-quadruped.ioc cotains the setup of the microcontroller it, can be accessed via the STM32CubeIDE:
 ![alt text](https://github.com/nicoRomeroCuruchet/mini-quadruped/blob/main/img/Screen%20Shot%202022-04-01%20at%2010.30.43.png)
 
-The code that runs on the Jetson Nano can be found in the mini-quadruped/mediapipe/webcam.py file: 
+The code that runs on the Jetson Nano can be found in the mini-quadruped/mediapipe/webcam.py file. After downloading the code onto the blue pill and testing the connection between the Jetson Nano and the MCU, execute the following command to start running the libraries that obtain the hand's position:
 
       python webcam.py
 
