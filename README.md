@@ -49,6 +49,10 @@ The **src/Core/Inc/servo_configuration.h** contains the setup to control the ser
  and the file in src/mini-quadruped.ioc cotains the setup of the microcontroller it, can be accessed via the STM32CubeIDE:
 ![alt text](https://github.com/nicoRomeroCuruchet/mini-quadruped/blob/main/img/Screen%20Shot%202022-04-01%20at%2010.30.43.png)
 
+The code that runs on the Jetson Nano can be found in the mini-quadruped/mediapipe/webcam.py file: 
+
+      python webcam.py
+
 # MPU6050
 
 The MPU6050 measures rotational and linear motion, and provides accurate data about the quadruped's orientation and movement. It communicates with the host device using I2C interface and can be easily integrated into a variety of microcontroller-based projects. In this project, I am using I2C1, which is located on the port B pins 6 and 7 of the MCU, and handle with the library probided by Bulanov Konstantin.
