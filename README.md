@@ -20,7 +20,7 @@ The STM32F103C8 is a popular microcontroller from STMicroelectronics, based on t
 
 The STM32F103C8 is commonly used in a wide range of embedded systems, including industrial control systems, motor control applications, and consumer electronics. Its high-performance, low-power consumption, and rich set of features make it a popular choice for developers looking to build complex and efficient systems. The STM32F103C8 is also supported by a variety of development tools and software, including the STM32CubeMX software tool, which allows developers to configure and generate code for the microcontroller.
 
-# STM32CubeIDE
+# How to deploy the code:
 
 The STM32CubeIDE is an advanced C/C++ development platform with peripheral configuration, code generation, code compilation,
 and debug features for STM32 microcontrollers and microprocessors. Is available for free for different operating systems at 
