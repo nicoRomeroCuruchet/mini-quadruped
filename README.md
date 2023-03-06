@@ -49,14 +49,14 @@ The **src/Core/Inc/servo_configuration.h** contains the setup to control the ser
  and the file in src/mini-quadruped.ioc cotains the setup of the microcontroller it, can be accessed via the STM32CubeIDE:
 ![alt text](https://github.com/nicoRomeroCuruchet/mini-quadruped/blob/main/img/Screen%20Shot%202022-04-01%20at%2010.30.43.png)
 
-The code that runs on the Jetson Nano can be found in the mini-quadruped/mediapipe/webcam.py file. After downloading the code onto the blue pill and testing the connection between the Jetson Nano and the MCU, execute the following command to start running the libraries that obtain the hand's position:
-
-      python webcam.py
-
-# MPU6050
-
-The MPU6050 measures rotational and linear motion, and provides accurate data about the quadruped's orientation and movement. It communicates with the host device using I2C interface and can be easily integrated into a variety of microcontroller-based projects. In this project, I am using I2C1, which is located on the port B pins 6 and 7 of the MCU, and handle with the library probided by Bulanov Konstantin.
-
 # Jeton Nano and Blue Pill conection
 
 Once the information is collected by the webcam and processed using the Mediapipe libraries running on the Jetson Nano, it's sent via USART (using Port A pins 2 and 3) to the Blue Pill. The Blue Pill then computes an algorithm to determine the position of the torso that's needed to center the hand in the image captured by the webcam, based on the hand's location on the screen.
+
+The code that runs on the Jetson Nano can be found in the mini-quadruped/mediapipe/webcam.py file. After downloading the code onto the blue pill and testing the connection between the Jetson Nano and the MCU, execute the following command to start running the libraries that obtain the hand's position:
+
+      python webcam.py
+      
+# MPU6050
+
+The MPU6050 measures rotational and linear motion, and provides accurate data about the quadruped's orientation and movement. It communicates with the host device using I2C interface and can be easily integrated into a variety of microcontroller-based projects. In this project, I am using I2C1, which is located on the port B pins 6 and 7 of the MCU, and handle with the library probided by Bulanov Konstantin.
