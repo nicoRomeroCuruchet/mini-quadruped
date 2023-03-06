@@ -19,8 +19,6 @@ A hand tracking solution that can detect and track the position and movement of 
 
 The STM32F103C8 is a popular microcontroller from STMicroelectronics, based on the ARM Cortex-M3 core. It features 64 KB of Flash memory and 20 KB of SRAM, as well as a variety of on-chip peripherals, such as timers, SPI, I2C, USART, and ADC. The STM32F103C8 is commonly used in a wide range of embedded systems, including industrial control systems, motor control applications, and consumer electronics. Its high-performance, low-power consumption, and rich set of features make it a popular choice for developers looking to build complex and efficient systems. The STM32F103C8 is also supported by a variety of development tools and software, including the STM32CubeMX software tool, which allows developers to configure and generate code for the microcontroller.
 
-PINOUT DIAGRAM:
-
 ![alt text](https://github.com/nicoRomeroCuruchet/mini-quadruped/blob/main/img/stm32f103.webp)
 
 # How to deploy the code in the MCU?
