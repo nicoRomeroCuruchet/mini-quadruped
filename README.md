@@ -55,4 +55,4 @@ The MPU6050 measures rotational and linear motion, and provides accurate data ab
 
 # Jeton Nano and Blue Pill conection
 
-Once the information is collected by the webcam and processed using the Mediapipe libraries running on the Jetson Nano, it's sent via UART (using Port A pins 2 and 3) to the Blue Pill. The Blue Pill then computes an algorithm to determine the position of the torso that's needed to center the hand in the image captured by the webcam, based on the hand's location on the screen.
+Once the information is collected by the webcam and processed using the Mediapipe libraries running on the Jetson Nano, it's sent via USART (using Port A pins 2 and 3) to the Blue Pill. The Blue Pill then computes an algorithm to determine the position of the torso that's needed to center the hand in the image captured by the webcam, based on the hand's location on the screen.
