@@ -51,5 +51,5 @@ The **src/Core/Inc/servo_configuration.h** contains the setup to control the ser
 
 # MPU6050
 
-The MPU6050 measures rotational and linear motion, and provides accurate data about the quadruped's orientation and movement. It communicates with the host device using I2C interface and can be easily integrated into a variety of microcontroller-based projects. In this project, I am using I2C1, which is located on pins 6 and 7 of the MCU.
+The MPU6050 measures rotational and linear motion, and provides accurate data about the quadruped's orientation and movement. It communicates with the host device using I2C interface and can be easily integrated into a variety of microcontroller-based projects. In this project, I am using I2C1, which is located on pins 6 and 7 of the MCU with the library probided by Bulanov Konstantin (https://github.com/leech001/MPU6050)
 
