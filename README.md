@@ -15,7 +15,7 @@ The Jetson Nano runs on a Linux-based operating system and supports a variety of
 A hand tracking solution that can detect and track the position and movement of hands in real-time video was designed using **MediaPipe**, which is an open-source framework developed by Google that provides a variety of pre-built, customizable machine learning models and processing pipelines for tasks such as image and video analysis, facial recognition, hand tracking, and more. MediaPipe also provides a set of C++ and Python libraries for developers to easily incorporate these models and pipelines into their own applications.
 
 
-# STM32F103C8
+# STM32F103C8, the Blue Pill
 
 The STM32F103C8 is a popular microcontroller from STMicroelectronics, based on the ARM Cortex-M3 core. It features 64 KB of Flash memory and 20 KB of SRAM, as well as a variety of on-chip peripherals, such as timers, SPI, I2C, USART, and ADC. The STM32F103C8 is commonly used in a wide range of embedded systems, including industrial control systems, motor control applications, and consumer electronics. Its high-performance, low-power consumption, and rich set of features make it a popular choice for developers looking to build complex and efficient systems. The STM32F103C8 is also supported by a variety of development tools and software, including the STM32CubeMX software tool, which allows developers to configure and generate code for the microcontroller.
 
@@ -51,8 +51,8 @@ The **src/Core/Inc/servo_configuration.h** contains the setup to control the ser
 
 # MPU6050
 
-The MPU6050 measures rotational and linear motion, and provides accurate data about the quadruped's orientation and movement. It communicates with the host device using I2C interface and can be easily integrated into a variety of microcontroller-based projects. In this project, I am using I2C1, which is located on the pins 6 and 7 of the MCU, and handle with the library probided by Bulanov Konstantin.
+The MPU6050 measures rotational and linear motion, and provides accurate data about the quadruped's orientation and movement. It communicates with the host device using I2C interface and can be easily integrated into a variety of microcontroller-based projects. In this project, I am using I2C1, which is located on the port B pins 6 and 7 of the MCU, and handle with the library probided by Bulanov Konstantin.
 
 # Jeton Nano and Blue Pill conection
 
-The information collected by the webcam and processed using the Mediapipe libraries running on the Jetson Nano is sent via UART to the STM32. Based on the location of the hand on the screen, the STM32 computes the position of the torso to center the hand in the image captured by the webcam.
+The information collected by the webcam and processed using the Mediapipe libraries running on the Jetson Nano is sent via UART (Port A pins 2 and 3) to the blue pill. Based on the location of the hand on the screen, the STM32 computes the position of the torso to center the hand in the image captured by the webcam.
