@@ -6,7 +6,7 @@ This open-source project is designed for anyone interested in researching low-co
 
 ![Demo](https://media.giphy.com/media/VpOj6hN5GWJ0BFpOUy/giphy-downsized-large.gif)
 
-# youtube video
+# Youtube video
 
 https://www.youtube.com/watch?v=wdcIH24sI44&ab_channel=NicoRomero
 
