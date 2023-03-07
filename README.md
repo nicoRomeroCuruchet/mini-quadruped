@@ -6,6 +6,10 @@ This open-source project is designed for anyone interested in researching low-co
 
 ![Demo](https://media.giphy.com/media/VpOj6hN5GWJ0BFpOUy/giphy-downsized-large.gif)
 
+# youtube video
+
+https://www.youtube.com/watch?v=wdcIH24sI44&ab_channel=NicoRomero
+
 # Jetno Nano 
 
 Jetson Nano is a small, powerful, and low-cost computer developed by NVIDIA, designed for building AI applications and projects. It features a quad-core ARM Cortex-A57 CPU, a 128-core NVIDIA Maxwell GPU, and 4GB of LPDDR4 memory. The Jetson Nano also includes a variety of I/O ports, including USB 3.0, HDMI, Gigabit Ethernet, and GPIO, making it easy to interface with various devices and sensors.
