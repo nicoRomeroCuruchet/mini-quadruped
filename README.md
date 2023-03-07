@@ -53,7 +53,7 @@ The **src/Core/Inc/servo_configuration.h** contains the setup to control the ser
 
 Once the information is collected by the webcam and processed using the Mediapipe libraries running on the Jetson Nano, it's sent via USART (using Port A pins 2 and 3) to the Blue Pill. The Blue Pill then computes an algorithm to determine the position of the torso that's needed to center the hand in the image captured by the webcam, based on the hand's location on the screen.
 
-The code that runs on the Jetson Nano can be found in the mini-quadruped/mediapipe/webcam.py file. After downloading the code onto the blue pill and testing the connection between the Jetson Nano and the MCU, execute the following command to start running the libraries that obtain the hand's position:
+The code that runs on the Jetson Nano can be found in the **mini-quadruped/mediapipe/webcam.py** file. After downloading the code onto the blue pill and testing the connection between the Jetson Nano and the MCU, execute the following command to start running the libraries that obtain the hand's position:
 
       python webcam.py
       
