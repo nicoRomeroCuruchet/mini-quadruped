@@ -31,7 +31,7 @@ the following link:
 
 The **src** directory contains the code that should be executed with the STM32CubeIDE and deployed on the blue pill (STM32F103C8T6).
 Run STM32CubeIDE, go to **File -> Import**, pull down the tab **'General'**, select **'Project from Folder or Archive'** and click next. 
-Finally, choose the path of src** where you have cloned in your pc.
+Finally, **choose the path of src** where you have cloned in your pc.
 
 In src/Core/Src/ (source file) and src/Core/Inc/ (header file) in this directory there are three files:
 
