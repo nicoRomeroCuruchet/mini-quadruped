@@ -8,7 +8,7 @@ This open-source project is designed for anyone interested in researching low-co
 
 # Youtube video
 
-hhttps://youtu.be/wdcIH24sI44
+https://youtu.be/wdcIH24sI44
 
 https://youtu.be/hFUbpantrfs
 
