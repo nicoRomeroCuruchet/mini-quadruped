@@ -8,7 +8,9 @@ This open-source project is designed for anyone interested in researching low-co
 
 # Youtube video
 
-https://www.youtube.com/watch?v=wdcIH24sI44&ab_channel=NicoRomero
+hhttps://youtu.be/wdcIH24sI44
+
+https://youtu.be/hFUbpantrfs
 
 # Jetno Nano 
 
